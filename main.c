@@ -2,6 +2,6 @@
 
 int main()
 {
-	printf("Жопа");
+	printf("Писька");
 	return 0;
 }
