@@ -2,6 +2,8 @@
 
 int main()
 {
-	printf("Писька");
+	int a = 0;
+	a++;
+	printf("%d", a);
 	return 0;
 }
