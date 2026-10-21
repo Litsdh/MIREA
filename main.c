@@ -2,6 +2,7 @@
 
 int main()
 {
-	printf("Писька");
+	int a = 15;
+	printf("%d\n", a);
 	return 0;
 }
