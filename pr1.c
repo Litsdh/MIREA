@@ -1,50 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-int main(int num, char* argv[])
+#include <ctype.h>
+int main(int argc, char* argv[])
 {
-
-	
-	int *arr = (int *)malloc(num * sizeof(int));
+	int *arr = (int *)malloc((argc-3)/3 * sizeof(int));
 	int k;
+	bool s = true;
 
-	for(int i = 1; i < num - 1; i++)
-	{
-		int num1, num2, res;
-		num1 = atoi(argv[i-1]);
-		num2 = atoi(argv[i+1]);
-		if(strcmp(argv[i], "-k") == 0)
+	for(int i = 2;i < argc; i += 3)
+	{	
+
+		if((argv[i-1][0] == '-') && (argv[i-1][1] == 'k'))
 		{
-			k = atoi(argv[i+1]);
+			k = atoi(argv[i]);
 			break;
 		}
+
+		int num1 = atoi(argv[i-1]), num2 = atoi(argv[i+1]), res;
 		
-		switch(*argv[i])
+		printf("%d %d\n", num1,num2);
+		switch(argv[i][0])
 		{
 		case '+': res = num1 + num2; break;
                 case '-': res = num1 - num2; break;
                 case '*': res = num1 * num2; break;
                 case '%': res = num1 % num2; break;
+		default: printf("Неккоректный оператор: %c\n", argv[i][0]); s = false; break;
 		}
-		
-		arr[i] = res;
-		printf("%d\n", arr[i]);
+		arr[i/3] = res;
 	}
-	
-	for(int i = 2; i < num - 1; i+=3)
-	{	
+
+	if(!s)
+	{
+		return 1;
+	}
+
+	for(int i = 0; i < (argc-3)/3; i++)
+	{
 		printf("%c", arr[i] - k);
 	}
-	
-	
-	
 	printf("\n");
+	free(arr);
 	return 0;
 }
-
-//123 * 123 123 * 123 123 * 123 123 * 123 ...//
-//1     3   4     6   7     9   10    12  ...//
-//    2         5         8         11    ...//
-
 
 
