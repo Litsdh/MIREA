@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "method.h"
 
 int main(int argc, char* argv[])
 {
@@ -24,22 +24,16 @@ int main(int argc, char* argv[])
 		}
 		// Значение левого (num1), правого (num2) операндов и их результата (res)
 		int num1 = atoi(argv[i-1]), num2 = atoi(argv[i+1]), res;
-			
-		// Поиск результата по оператору, если оператор некорректный, то переменная op приравнивается false
-		switch(argv[i][0])
-		{
-		case '+': res = num1 + num2; break;
-                case '-': res = num1 - num2; break;
-                case '*': res = num1 * num2; break;
-                case '%': res = num1 % num2; break;
-		default:  printf("Некорректный оператор: %c\n", argv[i][0]); op = false; break;
-		}
-			
+		
+		// Присвоение переменной res результат фунции arf, определенной в файле method.h
+		res = arf(&num1, &num2, &argv[i][0], &op);
+		
 		// Выход из цикла, если оператор неккоректный
 		if(!op)
 		{
 			break;
 		}
+
 		// Добавление результата в массив
 		arr[i/3] = res;
 
@@ -65,15 +59,9 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-
-	// Вычисление результирующей строки
-	printf("Результирующая строка: ");
-	for(int i = 0; i < (argc-3)/3; i++)
-	{
-		printf("%c", arr[i] - key);
-	}
-	printf("\n");
-	
+	// Вывод результирующей строки через функцию res_str, определённую в файле method.c
+	res_str(&argc, &key, &arr);
+		
 	// Освобождение массива
 	free(arr);
 	
