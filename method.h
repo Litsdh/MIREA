@@ -2,9 +2,8 @@
 #define METHOD_H
 
 
-int arf(int *n1, int *n2, char *s, bool *prov);
+int arf(long int *n1, long int *n2, char *s, int **arr);
 
-int res_str(int *argc, int *key, int **arr);
-
+int res_str(int *argc, long int *key, int **arr);
 
 #endif // METHOD_H

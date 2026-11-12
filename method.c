@@ -1,13 +1,14 @@
 #include "method.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-int arf(int *n1, int *n2, char *s, bool *p)
+// Функция вычисления арифметического выражения
+int arf(long int *n1, long int *n2, char *s, int **arr)
 {
 	// Разыменовываем указатели и присваиваем в переменные
-	int num1 = *n1, num2 = *n2; char symb = *s;
-	
+	long int num1 = *n1, num2 = *n2; char symb = *s;	
 	// Результат арифметического вычисления
-	int arf;
+	long int arf;
 
 	switch(symb)
 	{
@@ -20,15 +21,17 @@ int arf(int *n1, int *n2, char *s, bool *p)
 			  }
 			  else
 			  {
-				  printf("Деление на 0\n"); *p = false; break;
+				  printf("Деление на 0\n"); free(*arr); exit(1);
 			  }
-		default: printf("Некорректный оператор: %c\n", symb); *p = false; break;
+		default: printf("Некорректный оператор: %c\n", symb); free(*arr); exit(1);
 	}
 	return arf;
 }
 
 
-int res_str(int *argc, int *key, int **arr)
+
+// Функция вычисления результирующей строки
+int res_str(int *argc, long int *key, int **arr)
 {
 	printf("Результирующая строка: ");
 	for(int i = 0; i < (*argc-3)/3; i++)
