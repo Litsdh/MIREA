@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // Функция вычисления арифметического выражения
-int arf(long int *n1, long int *n2, char *s, int **arr)
+int arf(long int *n1, long int *n2, char *s, int **arr, bool *pr)
 {
 	// Разыменовываем указатели и присваиваем в переменные
 	long int num1 = *n1, num2 = *n2; char symb = *s;	
@@ -21,9 +21,9 @@ int arf(long int *n1, long int *n2, char *s, int **arr)
 			  }
 			  else
 			  {
-				  printf("Деление на 0\n"); free(*arr); exit(1);
+				  printf("Деление на 0\n"); *pr = false; break;
 			  }
-		default: printf("Некорректный оператор: %c\n", symb); free(*arr); exit(1);
+		default: printf("Некорректный оператор: %c\n", symb);*pr = false; break;
 	}
 	return arf;
 }
