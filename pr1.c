@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
 	// Вывод ответов
 	for(int i; i < (argc-3)/3; i++)
 	{
-		printf("Ответ №%d: %d\n", i, arr[i]);
+		printf("Ответ №%d: %d\n", i+1, arr[i]);
 	}
 
 	// Вывод результирующей строки через функцию res_str, определённую в файле method.c
