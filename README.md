@@ -1,3 +1,1 @@
-# Title for project's theme
-
-## Description
+# РТУ МИРЭА КМБО-22-26 Васюткин Ю.Н.
